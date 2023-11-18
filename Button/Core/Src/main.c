@@ -72,7 +72,7 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-
+	int delay = 5;
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -94,14 +94,19 @@ int main(void)
   {
     /* USER CODE END WHILE */
 		if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0) == GPIO_PIN_SET){
-			HAL_Delay(150);
+			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, GPIO_PIN_SET);
+			/*HAL_Delay(150);
 			if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_0) == GPIO_PIN_SET){
 				HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, GPIO_PIN_SET);
-			}
+			}*/
 		}
 		else{
+			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, GPIO_PIN_SET);
+			HAL_Delay(delay);
 			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, GPIO_PIN_RESET);
+			HAL_Delay(3*delay);
 		}
+		
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
